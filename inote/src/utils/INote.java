@@ -1,10 +1,3 @@
-//==============================================================================
-//==============================================================================
-/* This application is created By Mr.Ibrahim Qureshi Designation: Software Engineer */
-//==============================================================================
-//==============================================================================
-/* This application is copyright protected please do not copy this code */
-//==============================================================================
  package utils;
 import java.awt.BorderLayout;
 import java.awt.SplashScreen;
