@@ -9,6 +9,7 @@
 import java.awt.BorderLayout;
 import java.awt.SplashScreen;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -53,6 +54,7 @@ import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 import javax.swing.text.Element;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 final class INote extends JFrame implements ActionListener{
 	
@@ -88,6 +90,8 @@ final class INote extends JFrame implements ActionListener{
 	private File openedFile;
 	
 	private BufferedWriter writer;
+	private BufferedReader reader;
+	private FileReader fr;
 	
 	private SplashScreen splash;
 	private Graphics2D g;
@@ -98,6 +102,8 @@ final class INote extends JFrame implements ActionListener{
     // so that the can be redone if requested
 	
 	private UndoManager undo;
+	
+	private String lines;
 	
 	//Constructors
 	
@@ -126,7 +132,7 @@ final class INote extends JFrame implements ActionListener{
 			System.out.print("getSplashScreen returned null...");
 			return null;
 		}
-		Graphics2D g = splash.createGraphics();
+		g = splash.createGraphics();
 		for(int i = 0; i<100; i++){
 			splash.update();
 			try{
@@ -141,7 +147,7 @@ final class INote extends JFrame implements ActionListener{
 	private JToolBar createToolBar(){
 		
 		tool = new JToolBar();
-		
+//		image icons to display icons 
 		newFileIcon = new ImageIcon("icons/default_document2.png");
 		openFileIcon = new ImageIcon("icons/document_add.png");
 		saveFileIcon = new ImageIcon("icons/save.png");
@@ -151,6 +157,7 @@ final class INote extends JFrame implements ActionListener{
 		undoIcon = new ImageIcon("icons/Undo-icon.png");
 		redoIcon = new ImageIcon("icons/Redo-icon.png");
 		
+//		store image icons in jbutton
 		undoBtn = new JButton(undoIcon);
 		undoBtn.addActionListener(this);
 		undoBtn.setToolTipText("Undo text");
@@ -410,9 +417,9 @@ final class INote extends JFrame implements ActionListener{
 	private void openingFiles(File fileName){
 		try{
 			openedFile = fileName;
-			FileReader fr = new FileReader(fileName);
-			BufferedReader reader = new BufferedReader(fr);
-			String lines = reader.readLine();
+			fr = new FileReader(fileName);
+			reader = new BufferedReader(fr);
+			lines = reader.readLine();
 			while(lines != null){
 				textArea.append(lines+"\n");
 				lines = reader.readLine();
@@ -589,12 +596,23 @@ final class INote extends JFrame implements ActionListener{
 	}
 	
 	public static void main(String[] args){
-		try{
-			UIManager.setLookAndFeel(
-				UIManager.getSystemLookAndFeelClassName());
-		}catch(Exception e){
-			System.out.println("Error :"+e.getStackTrace());
-		}
+			try {
+				UIManager.setLookAndFeel(
+					UIManager.getSystemLookAndFeelClassName());
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedLookAndFeelException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 				new INote();
 		// IsetVisible(true);
 	}
