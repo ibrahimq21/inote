@@ -1,4 +1,4 @@
- package utils;
+package utils;
 import java.awt.BorderLayout;
 import java.awt.SplashScreen;
 import java.awt.Graphics2D;
