@@ -1,10 +1,3 @@
-//==============================================================================
-//==============================================================================
-/* This application is created By Mr.Ibrahim Qureshi Designation: Software Engineer */
-//==============================================================================
-//==============================================================================
-/* This application is copyright protected please do not copy this code */
-//==============================================================================
  package utils;
 import java.awt.BorderLayout;
 import java.awt.SplashScreen;
@@ -238,6 +231,7 @@ final class INote extends JFrame implements ActionListener{
 		textArea.setFont(textFont);
 		line.setFont(textFont);
 		textArea.setBorder(BorderFactory.createCompoundBorder(textBorder, BorderFactory.createEmptyBorder(2, 5, 0, 0)));
+		
 		return textArea;
 	}
 	
