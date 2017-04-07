@@ -58,6 +58,10 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 final class INote extends JFrame implements ActionListener{
 	
+	/**
+	 * created by Ibrahim Qureshi
+	 */
+	private static final long serialVersionUID = -6771561612012816309L;
 	//menu
 	private JMenu fileMenu,editMenu;
 	private JMenuItem newFile,openFile,saveFile,saveAsFile,exit;
@@ -147,6 +151,7 @@ final class INote extends JFrame implements ActionListener{
 	private JToolBar createToolBar(){
 		
 		tool = new JToolBar();
+
 //		image icons to display icons 
 		newFileIcon = new ImageIcon("icons/default_document2.png");
 		openFileIcon = new ImageIcon("icons/document_add.png");
